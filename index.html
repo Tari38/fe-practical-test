@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/eb74a2a952.js" crossorigin="anonymous"></script>
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+  <title>Frontend Developer Test</title>
+  <script>
+  $(function() {
+    let reviews = [];
+ 
+    $.getJSON('data.json', function(data) {
+        $.each(data.reviews, function(i, f) {
+           let card = "<div>" + f.id + "</div>" +
+            "<div>" + f.rating + "</div>" + "<p>" + f.review + "</p>" + "<small>" + f.author + "</small>"
+            $(card).appendTo("#reviews");
+      });
+ 
+    });
+ 
+ });
+</script>
+</head>
+
+<body onload="load()">
+  <header class="header">
+    <!-- navigation -->
+    <nav class="navbar navbar-expand-lg fixed w-100 shadow-lg pt-2 px-5" >
+      <a class="navbar-brand" href="/">BRAND</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#properties">All Properties</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#reviews">Testimonials</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="review-form.html">Leave a Review</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- end of navigation -->
+  </header>
+
+  <!-- properties section -->
+  <section id="properties" class="pt-5">
+    <div class="container-fluid p-3 mb-4 text-bg-light shadow" style="border-bottom: solid #4344ae 4px">
+      <h1 class="text-center text-uppercase fw-light color-dark p-4" style="color:#4344ae">Our Featured Listing</h1>
+      <div class="row row-cols-auto row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
+
+        <!-- col 1 card 1 -->
+        <div class="col mx-auto">
+          <div aria-label="first property card" class="card d-block shadow-lg">
+            <div class="bg-image">
+              <img class="card-img-top w-100" src="./assets/unsplash-apartment.jpg"
+                alt="An open plan, contemporary living space.">
+              <div class="position-relative w-100 py-3 bg-dark opacity-75">
+                <div class="list-inline mx-auto">
+                  <li class="list-inline-item">
+                    <h4 aria-label="price per month"
+                      class="card-title text-white fw-bold position-absolute top-50 start-0 translate-middle-y px-4">
+                      £1,600 PCM
+                  </li>
+                  <li class="list-inline-item"> <span aria-label="Property badge = Let Agreed"
+                      class="badge shadow-lg rounded-pill text-bg-danger position-absolute top-50 end-0 translate-middle-y p-2 mx-4">Let
+                      Agreed</span></li>
+                  </h4>
+                </div>
+              </div>
+            </div>
+            <div class="card-body h-auto p-4">
+              <h6 class="card-title pb-5 fw-bold" aria-label="Property address">17 Carter Villas, Brockenhurst</h6>
+              <p aria-label="Property details are" class="card-text">2 Bedrooms <span class="text-warning">|</span> 0
+                Bathrooms <span class="text-warning">|</span> Other</p>
+            </div>
+            <!-- card footer -->
+            <div class="card-footer p-4 row w-100 mx-auto border-top border-warning">
+              <div class="list-inline mx-auto">
+                <li class="list-inline-item">
+                  <i onClick="addToSavedProperty" role="button">
+                    <img aria-label="save this property?" class="position-absolute bottom-0 start-0  mx-4 mb-3"
+                      alt="favourite icon" src="./assets/custom-icons/love.png" style="height: 40px" />
+                  </i>
+                </li>
+                <div class="list-inline position-absolute bottom-0 end-0 pb-2 px-4">
+                  <li class="list-inline-item">
+                    <i aria-label="This property is" class="fa-regular">&#xf133;</i>
+                  </li>
+                  <li class="list-inline-item">
+                    <p class="fw-light text-capitalize">Available: Now</p>
+                  </li>
+                </div>
+
+              </div>
+            </div>
+            <!-- end of card footer -->
+          </div>
+          <!-- end of card 1 -->
+        </div>
+        <!-- end of col 1 -->
+
+        <!-- col 2 card 2 -->
+        <div class="col mx-auto">
+          <div aria-label="second property card" class="card d-block shadow-lg">
+            <div class="bg-image">
+              <img class="card-img-top w-100" src="./assets/unsplash-house.jpg"
+                alt="A large modern detatched house with 2 floors">
+              <div class="position-relative w-100 py-3 bg-dark opacity-75">
+                <div class="list-inline mx-auto">
+                  <li class="list-inline-item">
+                    <h4 aria-label="price per month"
+                      class="card-title text-white fw-bold position-absolute top-50 start-0 translate-middle-y px-4">
+                      £1,400 PCM
+                  </li>
+                  <li class="list-inline-item"> <span aria-label="Property badge = To Let"
+                      class="badge shadow-lg rounded-pill text-bg-warning position-absolute top-50 end-0 translate-middle-y p-2 mx-4">To
+                      Let</span></li>
+                  </h4>
+                </div>
+              </div>
+            </div>
+            <div class="card-body h-auto p-4">
+              <h6 class="card-title pb-5 fw-bold" aria-label="Property address">56 Dumpton Cross, Exeter</h6>
+              <p aria-label="Property details are" class="card-text">4 Bedrooms <span class="text-warning">|</span> 4
+                Bathrooms <span class="text-warning">|</span> House</p>
+            </div>
+            <!-- card footer -->
+            <div class="card-footer p-4 row w-100 mx-auto border-top border-warning fs-6">
+              <div class="list-inline mx-auto">
+                <li class="list-inline-item">
+                  <i onClick="addToSavedProperty" role="button">
+                    <img aria-label="save this property?" class="position-absolute bottom-0 start-0  mx-4 mb-3"
+                      alt="favourite icon" src="./assets/custom-icons/love.png" style="height: 40px" />
+                  </i>
+                </li>
+                <div class="list-inline position-absolute bottom-0 end-0 pb-2 px-4">
+                  <li class="list-inline-item">
+                    <i aria-label="This property is" class="fa-regular">&#xf133;</i>
+                  </li>
+                  <li class="list-inline-item">
+                    <p class="fw-light text-capitalize ">Available: November 6, 2022</p>
+                  </li>
+                </div>
+
+              </div>
+            </div>
+            <!-- end of card footer -->
+          </div>
+          <!-- end of card 2 -->
+        </div>
+        <!-- end of col 2 -->
+
+        <!-- col 3 card 3 -->
+        <div class="col mx-auto">
+          <div aria-label="third property card" class="card d-block shadow-lg">
+            <div class="bg-image">
+              <img class="card-img-top w-100" src="./assets/unsplash-bedroom.jpg"
+                alt="A light and airy contemporary bedroom.">
+              <div class="position-relative w-100 py-3 bg-dark opacity-75">
+                <div class="list-inline mx-auto">
+                  <li class="list-inline-item">
+                    <h4 aria-label="sale price"
+                      class="card-title text-white fw-bold position-absolute top-50 start-0 translate-middle-y px-4">
+                      £290,000
+                  </li>
+                  <li class="list-inline-item"> <span aria-label="Property badge = For Sale"
+                      class="badge shadow-lg rounded-pill text-bg-warning position-absolute top-50 end-0 translate-middle-y p-2 mx-4">For
+                      Sale</span></li>
+                  </h4>
+                </div>
+              </div>
+            </div>
+            <div class="card-body h-auto p-4">
+              <h6 class="card-title pb-5 fw-bold" aria-label="Property address">118 Kingsdale Ford, Sherborne</h6>
+              <p aria-label="Property details are" class="card-text">5 Bedrooms <span class="text-warning">|</span> 1
+                Bathrooms <span class="text-warning">|</span> House</p>
+            </div>
+            <!-- card footer -->
+            <div class="card-footer p-4 row w-100 mx-auto border-top border-warning">
+              <div class="list-inline mx-auto">
+                <li class="list-inline-item">
+                  <i onClick="addToSavedProperty" role="button">
+                    <img aria-label="save this property?" class="position-absolute bottom-0 start-0  mx-4 mb-3"
+                      alt="favourite icon" src="./assets/custom-icons/love.png" style="height: 40px" />
+                  </i>
+                </li>
+                <div class="list-inline position-absolute bottom-0 end-0 pb-2 px-4">
+                  <li class="list-inline-item">
+                    <i aria-label="This property is" class="fa-regular">&#xf133;</i>
+                  </li>
+                  <li class="list-inline-item">
+                    <p class="fw-light text-capitalize">Available: For Sale</p>
+                  </li>
+                </div>
+
+              </div>
+            </div>
+            <!-- end of card footer -->
+          </div>
+          <!-- end of card 3 -->
+        </div>
+        <!-- end of col 3 -->
+      </div>
+    </div>
+  </section>
+  <!-- end of properties section -->
+
+  <!-- reviews section -->
+  <section id="reviews">
+    <div class="container-fluid p-2 my-3 text-bg-warning shadow">
+      <div class="row mx-auto">
+        <img class="h-25 w-25 py-4 mx-auto" src="./assets/google-reviews.png" alt="carousel of Google reviews">
+      </div>
+      <div id="carouselExampleIndicators" class="carousel slide " data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"
+          style="width: 10px; height: 10px; border-radius: 100%; background-color: #4544ae"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"
+          style="width: 10px; height: 10px; border-radius: 100%; background-color: #4544ae"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"
+          style="width: 10px; height: 10px; border-radius: 100%; background-color: #4544ae"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" 
+          data-bs-slide-to="3" aria-label="Slide 4"
+          style="width: 10px; height: 10px; border-radius: 100%; background-color: #4544ae"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"
+          style="width: 10px; height: 10px; border-radius: 100%; background-color: #4544ae"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"
+          style="width: 10px; height: 10px; border-radius: 100%; background-color: #4544ae"></button>
+        </div>
+
+        
+        <div class="carousel-inner">
+          
+          <!-- slide 1 col 1 -->
+
+          <div class="carousel-item active">
+            <div class="row row-cols-auto">
+              <div class="col card bg-warning border-0 mx-auto position-relative " id="id">
+                <img class="img h-100 w-100 mx-auto mb-1" src="./assets/review-bubble.png" alt="a speech bubble">
+                <div class="card-body h-75 w-100">
+                  <div class="p-4 pt-5 position-absolute top-0 start-50 translate-middle-x w-100">
+                    <div class="position-absolute top-0 start-50 translate-middle-x mx-auto">
+                      <div class="rating my-2 mx-auto" id="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    </div>                  
+                    </div>
+                    <p class="review mt-0 text-light text-center overflow-hidden position-relative top-0" id="review">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed tortor ultrices, suscipit
+                      odio
+                      sed, pharetra dui. Nunc sit amet ipsum id dolor volutpat dictum eget sit amet tortor.
+                    </p>
+                  </div>
+                </div>
+                <small class="author text-dark position-absolute start-0 bottom-0 mt-0 pb-5 px-3" id="author">
+                  <i class="fa-brands fa-google"></i> 
+                  Phil Mitchel 
+                  </small>
+              </div>        
+            
+          
+             
+          
+              <div class="col card bg-warning border-0 mx-auto position-relative " id="id">
+                <img class="img h-100 w-100 mx-auto mb-1" src="./assets/review-bubble.png" alt="a speech bubble">
+                <div class="card-body h-75 w-100">
+                  <div class="p-4 pt-5 position-absolute top-0 start-50 translate-middle-x w-100">
+                    <div class="position-absolute top-0 start-50 translate-middle-x mx-auto">
+                      <div class="rating my-2 mx-auto" id="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                      </div>                  
+                    </div>
+                    <p class="review mt-0 text-light text-center overflow-hidden position-relative top-0" id="review">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed tortor ultrices, suscipit
+                      odio
+                      sed, pharetra dui. Nunc sit amet ipsum id dolor volutpat dictum eget sit amet tortor.
+                    </p>
+                  </div>
+                </div>
+                <small class="author text-dark position-absolute start-0 bottom-0 mt-0 pb-5 px-3" id="author">
+                  <i class="fa-brands fa-google"></i> 
+                  Karl Pilkington 
+                  </small>
+              </div>        
+           
+      
+          
+              <div class="col card bg-warning border-0 mx-auto position-relative " id="id">
+                <img class="img h-100 w-100 mx-auto mb-1" src="./assets/review-bubble.png" alt="a speech bubble">
+                <div class="card-body h-75 w-100">
+                  <div class="p-4 pt-5 position-absolute top-0 start-50 translate-middle-x w-100">
+                    <div class="position-absolute top-0 start-50 translate-middle-x mx-auto">
+                      <div class="rating my-2 mx-auto" id="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    </div>                  
+                    </div>
+                    <p class="review mt-0 text-light text-center overflow-hidden position-relative top-0" id="review">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed tortor ultrices, suscipit
+                      odio
+                      sed, pharetra dui. Nunc sit amet ipsum id dolor volutpat dictum eget sit amet tortor.
+                    </p>
+                  </div>
+                </div>
+                <small class="author text-dark position-absolute start-0 bottom-0 mt-0 pb-5 px-3" id="author">
+                  <i class="fa-brands fa-google"></i> 
+                  Simon Pegg 
+                  </small>
+              </div>        
+            </div>
+          </div> 
+
+          <div class="carousel-item">
+            <div class="row row-cols-auto">
+              <div class="col card bg-warning border-0 mx-auto position-relative " id="id">
+                <img class="img h-100 w-100 mx-auto mb-1" src="./assets/review-bubble.png" alt="a speech bubble">
+                <div class="card-body h-75 w-100">
+                  <div class="p-4 pt-5 position-absolute top-0 start-50 translate-middle-x w-100">
+                    <div class="position-absolute top-0 start-50 translate-middle-x mx-auto">
+                      <div class="rating my-2 mx-auto" id="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    </div>                  
+                    </div>
+                    <p class="review mt-0 text-light text-center overflow-hidden position-relative top-0" id="review">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed tortor ultrices, suscipit
+                      odio
+                      sed, pharetra dui. Nunc sit amet ipsum id dolor volutpat dictum eget sit amet tortor.
+                    </p>
+                  </div>
+                </div>
+                <small class="author text-dark position-absolute start-0 bottom-0 mt-0 pb-5 px-3" id="author">
+                  <i class="fa-brands fa-google"></i> 
+                  Buffy Summers
+                  </small>
+              </div>        
+            
+          
+             
+          
+              <div class="col card bg-warning border-0 mx-auto position-relative " id="id">
+                <img class="img h-100 w-100 mx-auto mb-1" src="./assets/review-bubble.png" alt="a speech bubble">
+                <div class="card-body h-75 w-100">
+                  <div class="p-4 pt-5 position-absolute top-0 start-50 translate-middle-x w-100">
+                    <div class="position-absolute top-0 start-50 translate-middle-x mx-auto">
+                      <div class="rating my-2 mx-auto" id="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                    </div>                  
+                    </div>
+                    <p class="review mt-0 text-light text-center overflow-hidden position-relative top-0" id="review">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed tortor ultrices, suscipit
+                      odio
+                      sed, pharetra dui. Nunc sit amet ipsum id dolor volutpat dictum eget sit amet tortor.
+                    </p>
+                  </div>
+                </div>
+                <small class="author text-dark position-absolute start-0 bottom-0 mt-0 pb-5 px-3" id="author">
+                  <i class="fa-brands fa-google"></i> 
+                    Albert Einstein
+                  </small>
+              </div>        
+           
+      
+          
+              <div class="col card bg-warning border-0 mx-auto position-relative " id="id">
+                <img class="img h-100 w-100 mx-auto mb-1" src="./assets/review-bubble.png" alt="a speech bubble">
+                <div class="card-body h-75 w-100">
+                  <div class="p-4 pt-5 position-absolute top-0 start-50 translate-middle-x w-100">
+                    <div class="position-absolute top-0 start-50 translate-middle-x mx-auto">
+                      <div class="rating my-2 mx-auto" id="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    </div>                  
+                    </div>
+                    <p class="review mt-0 text-light text-center overflow-hidden position-relative top-0" id="review">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed tortor ultrices, suscipit
+                      odio
+                      sed, pharetra dui. Nunc sit amet ipsum id dolor volutpat dictum eget sit amet tortor.
+                    </p>
+                  </div>
+                </div>
+                <small class="author text-dark position-absolute start-0 bottom-0 mt-0 pb-5 px-3" id="author">
+                  <i class="fa-brands fa-google"></i> 
+                  Dr Who 
+                  </small>
+              </div>        
+            </div>
+          </div>
+        </div> 
+      </div>       
+         
+      </div>
+    </div>
+  </section>
+  <footer class="footer position-fixed bottom-0 text-center py-1 bg-dark h-auto w-100">
+    <small class="text-light ">Created by Sam Dorrell (c)2022</small>
+  </footer>
+
+  <style>
+        
+    .checked {
+      color: yellow;
+    }
+    
+</style>
+<script type="text/javascript" src="data.json"></script>
+<script type="text/javascript" >
+  function load() {
+      var mydata = JSON.parse(reviews);
+      alert(mydata.length);
+
+      var div = document.getElementById('reviews');
+
+      for(var i = 0;i < mydata.length; i++)
+      {
+          div.innerHTML = div.innerHTML + "<div class='inner' id="+i+">"+ mydata[i].rating +"</div>";
+      }
+  }
+</script>
+   
+</body>
+
+</html>
